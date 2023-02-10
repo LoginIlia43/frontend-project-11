@@ -2,7 +2,7 @@
   "name": "frontend-project-11",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/LoginIlia43/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/LoginIlia43/frontend-project-11/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/9db831fe83e22e210d9e/maintainability)](https://codeclimate.com/github/LoginIlia43/frontend-project-11/maintainability)",
-  "main": "index.js",
+  "main": "/src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,6 +38,8 @@
     "workbox-webpack-plugin": "^6.5.4"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.0"
   }
 }

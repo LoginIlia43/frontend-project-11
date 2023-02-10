@@ -17,28 +17,13 @@
                                 <input type="text" class="col input">
                                 <button class="col-1 btn">Find</button>
                         </div>
-                        <p class="example">Example: Hexlet.io/RSS</p>
-                        <p class="error">You need to put a valid URL</p>
                     </form>
+                    <p class="example">Example: Hexlet.io/RSS</p>
+                    <p class="error">You need to put a valid URL</p>
                     </div>
                 </div>
             </section>
             <section id="bottom"></section>
         </main>
     </body>
-    
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }
-    </script>
 </html>
