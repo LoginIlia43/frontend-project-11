@@ -1,1 +1,58 @@
 @import "~bootstrap/scss/bootstrap";
+
+* {
+    color: azure;
+}
+
+#top {
+    height: 216px;
+    background-color: #2F2929;
+}
+
+.top-row {
+    padding-top: 27px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.descr {
+    font-size: 16px;
+}
+
+.example {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    color: rgba(240, 255, 255, 0.498);
+}
+
+.error {
+    font-size: 14px;
+    color: rgb(207, 0, 0);
+}
+
+.btn {
+    margin-left: 5px;
+    margin-right: 12px;
+    width: 92px;
+    height: 39px;
+    background-color: #5483C9;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    color: azure;
+
+}
+
+.input {
+    margin-left: 12px;
+    height: 39px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-style: none;
+}
+
+.btn:hover {
+    background-color: #88b6fc;
+}
