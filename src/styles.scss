@@ -1,7 +1,35 @@
 @import "~bootstrap/scss/bootstrap";
 
 * {
-    color: azure;
+    color: rgb(241, 241, 241);
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    height: 56px;
+    flex: 0 0 auto;
+    background-color: #efefef;
+}
+
+footer .container {
+    margin-top: 16px;
+    text-align: center;
+    color: #2F2929;
+}
+
+#top {
+    flex: 0 0 auto;
+}
+
+#bottom {
+    height: 100%;
+    flex: 1 0 auto;
 }
 
 #top {
@@ -59,4 +87,18 @@ h1 {
 
 input {
     color: #333;
+}
+
+.flex {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.bottom-row {
+    color: #333;
+    font-size: 24px;
 }
