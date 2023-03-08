@@ -4,16 +4,8 @@
     color: rgb(241, 241, 241);
 }
 
-main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 footer {
     height: 56px;
-    flex: 0 0 auto;
     background-color: #efefef;
 }
 
@@ -23,8 +15,8 @@ footer .container {
     color: #2F2929;
 }
 
-#top {
-    flex: 0 0 auto;
+h3 {
+    color: #2F2929;
 }
 
 #bottom {
@@ -64,7 +56,7 @@ h1 {
 .btn {
     margin-left: 5px;
     margin-right: 12px;
-    width: 92px;
+    width: 160px;
     height: 39px;
     background-color: #5483C9;
     border-bottom-left-radius: 0px;
