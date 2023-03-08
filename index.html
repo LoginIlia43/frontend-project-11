@@ -12,12 +12,12 @@
                     <div class="row top-row">
                         <h1>RSS aggregator</h1>
                         <p class="descr">Start reading RSS today! It's easy! It's beautiful!</p>
-                        <form action="submit">
+                        <form method="get">
                             <div class="row form-row">
-                                <input type="text" class="col input">
-                                <button class="col-1 btn">Find</button>
-                        </div>
-                    </form>
+                                <input type="text" name="link" id="link" class="col input" placeholder="Input RSS link" required>
+                                <button class="col-1 btn" type="submit">Find</button>
+                             </div>
+                        </form>
                     <p class="example">Example: Hexlet.io/RSS</p>
                     <p class="error">You need to put a valid URL</p>
                     </div>
