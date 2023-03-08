@@ -1,8 +1,11 @@
 import './styles.scss';
 import 'bootstrap';
-import yup, { object, string } from 'yup';
+import { object, string } from 'yup';
+import render from './render.js';
+import renderForm from './renderForm.js'
+import watcher from './watcher.js';
 
-const app = () => {
+const app = async () => {
     const state = {
         link: '',
         isValidLink: false,
@@ -10,13 +13,15 @@ const app = () => {
         errors: [],
     };
 
-    const validateLink = async (state) => {
+    const watchedState = watcher(state, render, renderForm);
+
+    const validateLink = async (watchedState) => {
         let schema = object({
             link: string().url().test({
                 name: 'dublicate',
                 skipAbsent: true,
                 test(link, ctx) {
-                    if (state.rssList.includes(link)) {
+                    if (watchedState.rssList.includes(link)) {
                         return ctx.createError({ message: 'This RSS is already in the list' });
                     }
                     return true;
@@ -25,11 +30,15 @@ const app = () => {
         });
 
         try {
-            await schema.validate(state);
+            await schema.validate(watchedState);
+            watchedState.rssList.push(link);
+            watchedState.isValidLink = true;
+            // watchedState.errors = [];
         } catch (err) {
-            state.errors.push(err.errors);
+            watchedState.isValidLink = false;
+            watchedState.errors.push(...err.errors);
         }
-        console.log(state)
+        console.log(watchedState)
     };
 
     const form = document.querySelector('form');
@@ -40,7 +49,7 @@ const app = () => {
         const link = formData.get('link');
         state.link = link;
 
-        validateLink(state)
+        validateLink(watchedState)
     });
 
 }

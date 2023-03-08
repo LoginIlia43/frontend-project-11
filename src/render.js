@@ -1,8 +1,6 @@
-import './styles.scss';
-import 'bootstrap';
-import onChange from 'on-change';
-
-export default render = (watchedState) => {
-
-} ;
-
+export default (watchedState) => {
+    if (!watchedState.isValidLink) {
+        // RENDER FEEDS AND POSTS
+        // console.log(watchedState.errors)
+    };
+};
