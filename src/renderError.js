@@ -1,7 +1,7 @@
 export default (watchedState) => {
   const inputEl = document.querySelector('input');
   const errorEl = document.querySelector('.error');
-  inputEl.value = '';
-  inputEl.classList.remove('invalid');
-  errorEl.textContent = '';
+  const errorText = watchedState.formState.errors;
+  errorEl.textContent = errorText;
+  inputEl.classList.add('invalid');
 };
