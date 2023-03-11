@@ -1,4 +1,4 @@
-export default (watchedState) => {
+export default () => {
   const inputEl = document.querySelector('input');
   const errorEl = document.querySelector('.error');
   inputEl.value = '';

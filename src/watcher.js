@@ -6,10 +6,9 @@ export default (state) => onChange(state, (path, value, prev) => {
   if (path === 'formState.state') {
     switch (value) {
       case 'sent':
-        renderForm(state);
+        renderForm();
         break;
       case 'failed':
-        console.log('renderError');
         renderError(state);
         break;
 

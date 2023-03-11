@@ -1,8 +1,9 @@
 import './styles.scss';
 import 'bootstrap';
 import { object, string } from 'yup';
-
+import axios from 'axios';
 import watcher from './watcher.js';
+import parser from './parser.js';
 
 const app = () => {
   const state = {
@@ -46,11 +47,15 @@ const app = () => {
         .then(() => {
           formState.state = 'sent';
           watchedState.rssList.push(formState.link);
-          console.log('sending request');
+          const allOriginsLink = `https://allorigins.hexlet.app/get?disableCache=true&url=${formState.link}`;
+          return axios.get(allOriginsLink);
         })
+        .then((response) => parser(response.data.contents))
+        .then((parsed) => console.log(parsed))
         .catch((e) => {
           formState.errors = e.errors;
           formState.state = 'failed';
+          console.log(e);
         });
     });
   };
