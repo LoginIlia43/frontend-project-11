@@ -17,7 +17,7 @@ const app = () => {
 
   const watchedState = watcher(state);
 
-  const validateLink = async (watchedState) => {
+  const validateLink = (watchedState) => {
     const schema = object({
       link: string().url().test({
         name: 'dublicate',
@@ -31,19 +31,19 @@ const app = () => {
       }),
     });
 
-    return await schema.validate(state.formState);
+    return schema.validate(state.formState);
   };
   const form = document.querySelector('form');
 
   const handleSubmit = (watchedState) => {
     const { formState } = watchedState;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       formState.link = formData.get('link');
       formState.state = 'validating';
-      validateLink(watchedState)
+      await validateLink(watchedState)
         .then(() => {
           formState.state = 'sent';
           watchedState.rssList.push(formState.link);
