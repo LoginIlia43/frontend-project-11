@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 * {
-    color: rgb(241, 241, 241);
+    color: rgb(33, 33, 33);
 }
 
 footer {
@@ -15,8 +15,18 @@ footer .container {
     color: #2F2929;
 }
 
+h1,
+.descr {
+    color: #efefef;
+}
+
+h5 {
+    margin-bottom: 0;
+}
+
 h3 {
     color: #2F2929;
+    margin-bottom: 2rem;
 }
 
 #bottom {
@@ -53,6 +63,11 @@ h1 {
     color: rgb(207, 0, 0);
 }
 
+.no-error {
+    font-size: 14px;
+    color: rgb(26, 83, 13);
+}
+
 .btn {
     margin-left: 5px;
     margin-right: 12px;
@@ -85,8 +100,8 @@ input {
 .flex {
     margin-top: 34px;
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
     justify-content: space-between;
     gap: 6px;
 }
@@ -98,4 +113,32 @@ input {
 
 .invalid {
     border: 2px solid rgb(255, 0, 0);
+}
+
+#posts-container,
+#feeds-container {
+    flex-direction: column;
+}
+
+#posts-container {
+    width: 70%;
+    min-width: 500px;
+}
+
+#feeds-container {
+    width: 30%;
+}
+
+
+a,
+.text {
+    font-size: medium;
+}
+
+.text {
+    color: rgb(116, 114, 114);
+}
+
+a {
+    line-height: 0;
 }

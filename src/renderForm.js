@@ -3,5 +3,6 @@ export default () => {
   const errorEl = document.querySelector('.error');
   inputEl.value = '';
   inputEl.classList.remove('invalid');
-  errorEl.textContent = '';
+  errorEl.classList.add('no-error');
+  errorEl.textContent = 'RSS successfully loaded';
 };

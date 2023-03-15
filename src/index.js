@@ -4,6 +4,7 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import watcher from './watcher.js';
 import parser from './parser.js';
+import watcherFeed from './watcherFeed.js';
 
 const app = () => {
   const state = {
@@ -15,7 +16,29 @@ const app = () => {
     rssList: [],
   };
 
+  const infoState = {
+    feeds: [],
+    posts: [],
+  }
+  
   const watchedState = watcher(state);
+  const watchedFeedState = watcherFeed(infoState); 
+  
+  const getInfo = (document) => {
+    const feedsId = watchedFeedState.feeds.length + 1;
+    const feedTitle = document.querySelector('title').textContent;
+    const feedDescription = document.querySelector('description').textContent;
+    watchedFeedState.feeds.push({ id: feedsId, title: feedTitle, descr: feedDescription, link: watchedState.formState.link });
+
+    const items = Array.from(document.querySelectorAll('item'));
+    let postId = 1;
+    items.forEach((post) => {
+      const title = post.querySelector('title').textContent;
+      const link = post.querySelector('link').textContent;
+      watchedFeedState.posts.push({ id: postId, feedId: feedsId, title, link });
+      postId = postId + 1;
+    });
+  };
 
   const validateLink = (watchedState) => {
     const schema = object({
@@ -46,16 +69,18 @@ const app = () => {
       await validateLink(watchedState)
         .then(() => {
           formState.state = 'sent';
-          watchedState.rssList.push(formState.link);
           const allOriginsLink = `https://allorigins.hexlet.app/get?disableCache=true&url=${formState.link}`;
           return axios.get(allOriginsLink);
         })
         .then((response) => parser(response.data.contents))
-        .then((parsed) => console.log(parsed))
+        .then((parsed) => {
+          watchedState.rssList.push(formState.link);
+          console.log(parsed)
+          getInfo(parsed);
+        })
         .catch((e) => {
-          formState.errors = e.errors;
+          formState.errors = e.errors ? e.errors : e;
           formState.state = 'failed';
-          console.log(e);
         });
     });
   };
