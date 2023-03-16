@@ -2,9 +2,10 @@ import './styles.scss';
 import 'bootstrap';
 import { object, string } from 'yup';
 import axios from 'axios';
-import watcher from './watcher.js';
+import watcherState from './watcherState.js';
 import parser from './parser.js';
-import watcherFeed from './watcherFeed.js';
+import watcherContent from './watcherContent.js';
+import updateFeed from './updateFeed.js';
 
 const app = () => {
   const state = {
@@ -19,23 +20,26 @@ const app = () => {
   const infoState = {
     feeds: [],
     posts: [],
-  }
-  
-  const watchedState = watcher(state);
-  const watchedFeedState = watcherFeed(infoState); 
+  };
+
+
+
+
+  const watchedState = watcherState(state);
+  const watchedContentState = watcherContent(infoState); 
   
   const getInfo = (document) => {
-    const feedsId = watchedFeedState.feeds.length + 1;
+    const feedsId = watchedContentState.feeds.length + 1;
     const feedTitle = document.querySelector('title').textContent;
     const feedDescription = document.querySelector('description').textContent;
-    watchedFeedState.feeds.push({ id: feedsId, title: feedTitle, descr: feedDescription, link: watchedState.formState.link });
+    watchedContentState.feeds.push({ id: feedsId, title: feedTitle, descr: feedDescription, link: watchedState.formState.link });
 
     const items = Array.from(document.querySelectorAll('item'));
     let postId = 1;
     items.forEach((post) => {
       const title = post.querySelector('title').textContent;
       const link = post.querySelector('link').textContent;
-      watchedFeedState.posts.push({ id: postId, feedId: feedsId, title, link });
+      watchedContentState.posts.push({ id: postId, feedId: feedsId, title, link });
       postId = postId + 1;
     });
   };
@@ -73,19 +77,21 @@ const app = () => {
           return axios.get(allOriginsLink);
         })
         .then((response) => parser(response.data.contents))
-        .then((parsed) => {
-          watchedState.rssList.push(formState.link);
-          console.log(parsed)
-          getInfo(parsed);
-        })
         .catch((e) => {
           formState.errors = e.errors ? e.errors : e;
           formState.state = 'failed';
+        })
+        .then((parsed) => {
+          watchedState.rssList.push(formState.link);
+          getInfo(parsed);
+          const feed = watchedContentState.feeds.find((feed) => feed.link === formState.link);
+          updateFeed(feed, watchedContentState);
         });
     });
   };
 
   handleSubmit(watchedState);
+
 };
 
 app();
