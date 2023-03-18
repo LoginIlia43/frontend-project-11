@@ -35,8 +35,8 @@ const app = () => {
     watchedContentState.feeds.push({ id: feedsId, title: feedTitle, descr: feedDescription, link: watchedState.formState.link });
 
     const items = Array.from(document.querySelectorAll('item'));
-    let postId = 1;
     items.forEach((post) => {
+      const postId = watchedContentState.posts.length + 1;
       const title = post.querySelector('title').textContent;
       const link = post.querySelector('link').textContent;
       const description = post.querySelector('description').textContent;
@@ -49,7 +49,6 @@ const app = () => {
           link,
           description,
         });
-      postId = postId + 1;
     });
   };
 

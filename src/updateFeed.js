@@ -10,13 +10,12 @@ const updateFeed = (feed, watchedContentState) => {
     .then((html) => parser(html.data.contents))
     .then((data) => {
       const items = Array.from(data.querySelectorAll('item'));
-      const filteredPosts = watchedContentState.posts.filter(post => post.feedId === id);
       items.forEach((post) => {
         const title = post.querySelector('title').textContent;
         const link = post.querySelector('link').textContent;
         
-        if (filteredPosts.find(p => p.title === title) === undefined) {
-          const postId = filteredPosts.length + 1;
+        if (watchedContentState.posts.find(p => p.title === title) === undefined) {
+          const postId = watchedContentState.posts.length + 1;
           watchedContentState.posts.push({ id: postId, feedId: id, title, link });
         }
       })
