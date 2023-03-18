@@ -39,7 +39,16 @@ const app = () => {
     items.forEach((post) => {
       const title = post.querySelector('title').textContent;
       const link = post.querySelector('link').textContent;
-      watchedContentState.posts.push({ id: postId, feedId: feedsId, title, link });
+      const description = post.querySelector('description').textContent;
+
+      watchedContentState.posts.push(
+        {
+          id: postId,
+          feedId: feedsId,
+          title,
+          link,
+          description,
+        });
       postId = postId + 1;
     });
   };
@@ -72,7 +81,6 @@ const app = () => {
       formState.state = 'validating';
       await validateLink(watchedState)
         .then(() => {
-          formState.state = 'sent';
           const allOriginsLink = `https://allorigins.hexlet.app/get?disableCache=true&url=${formState.link}`;
           return axios.get(allOriginsLink);
         })
@@ -82,11 +90,16 @@ const app = () => {
           formState.state = 'failed';
         })
         .then((parsed) => {
+          formState.state = 'sent';
           watchedState.rssList.push(formState.link);
           getInfo(parsed);
           const feed = watchedContentState.feeds.find((feed) => feed.link === formState.link);
           updateFeed(feed, watchedContentState);
+        })
+        .catch(() => {
+          formState.state = 'failed';
         });
+
     });
   };
 
