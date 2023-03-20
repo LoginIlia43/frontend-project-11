@@ -28,8 +28,8 @@ const app = () => {
   };
 
   const wState = watcherState(state);
-  const wContentState = watcherContent(contentState);
   const wUiState = watcherUi(uiState);
+  const wContentState = watcherContent(contentState, wUiState);
   
   const addContent = (document) => {
     const feedsId = wContentState.feeds.length + 1;
