@@ -163,3 +163,7 @@ a {
 .btn:hover {
     color: white;
 }
+
+.btn:disabled {
+    background-color: #9cc1f8;
+}

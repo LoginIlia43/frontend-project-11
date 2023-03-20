@@ -97,7 +97,7 @@ const app = () => {
           formState.state = 'filling';
         })
         .catch((e) => {
-          formState.errors = e;
+          formState.errors = e.message;
           formState.state = 'invalid';
           formState.state = 'filling';
         });
