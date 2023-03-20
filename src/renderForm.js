@@ -5,4 +5,5 @@ export default () => {
   inputEl.classList.remove('invalid');
   errorEl.classList.add('no-error');
   errorEl.textContent = 'RSS successfully loaded';
+  inputEl.focus();
 };

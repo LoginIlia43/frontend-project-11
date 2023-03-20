@@ -5,10 +5,10 @@ import renderForm from './renderForm.js';
 export default (state) => onChange(state, (path, value, prev) => {
   if (path === 'formState.state') {
     switch (value) {
-      case 'sent':
+      case 'valid':
         renderForm();
         break;
-      case 'failed':
+      case 'invalid':
         renderError(state);
         break;
 

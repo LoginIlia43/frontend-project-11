@@ -1,7 +1,7 @@
 import parser from './parser.js';
 import axios from 'axios';
 
-const updateFeed = (feed, watchedContentState) => {
+const updateFeed = (feed, watchedContentState, wUiState) => {
   const { id, link } = feed;
   const allOriginsLink = `https://allorigins.hexlet.app/get?disableCache=true&url=${link}`;
   console.log('updating')
@@ -17,13 +17,14 @@ const updateFeed = (feed, watchedContentState) => {
         if (watchedContentState.posts.find(p => p.title === title) === undefined) {
           const postId = watchedContentState.posts.length + 1;
           watchedContentState.posts.push({ id: postId, feedId: id, title, link });
+          wUiState.idIsRead[postId] = false;
         }
       })
-      updateFeed(feed, watchedContentState);
+      updateFeed(feed, watchedContentState, wUiState);
     })
     .catch((e) => {
       console.log(e);
-      updateFeed(feed, watchedContentState)});
+      updateFeed(feed, watchedContentState, wUiState)});
   }, 5000);
 };
 
