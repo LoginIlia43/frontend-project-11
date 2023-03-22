@@ -176,3 +176,14 @@ a {
 .fw-bold {
     font-weight: bold;
 }
+
+.modal-footer button {
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-footer .btn-secondary {
+    border: 1px solid #5483C9;
+    background-color:#ffffff;
+    color: #5483C9;
+    border: 1px solid #5483C9;}

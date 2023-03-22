@@ -11,7 +11,11 @@ export default (watchedContentState) => {
     postTitleEl.setAttribute('href', link);
     liEl.append(postTitleEl);
     const postButtonEl = document.createElement('button');
+    postButtonEl.setAttribute('type', `button`);
     postButtonEl.setAttribute('data-id', `${id}`);
+    postButtonEl.setAttribute('data-bs-toggle', `modal`);
+    postButtonEl.setAttribute('data-bs-target', `#modal`);
+
     postButtonEl.classList.add(...['btn', 'btn-watch']);
     postButtonEl.textContent = 'Look';
     liEl.append(postButtonEl);
