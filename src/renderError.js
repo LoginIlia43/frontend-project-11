@@ -1,5 +1,4 @@
 export default (wState) => {
-  console.log(wState.formState.errors)
   const inputEl = document.querySelector('input');
   const errorEl = document.querySelector('.error');
   const errorText = wState.formState.errors;

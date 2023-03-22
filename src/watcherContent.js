@@ -33,7 +33,6 @@ const handlePostClick = (uiState) => {
 const handlePostButtonClick = (watchedContentState) => {
   const buttons = document.querySelectorAll('.btn-watch');
   buttons.forEach((button) => {
-    console.log(button)
     button.addEventListener('click', (evt) => {
       const id = String(evt.target.getAttribute('data-id'));
       const { title, description, link } = watchedContentState.posts.find((post) => post.id == id);

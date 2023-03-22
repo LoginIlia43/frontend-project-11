@@ -4,7 +4,6 @@ import axios from 'axios';
 const updateFeed = (feed, watchedContentState, wUiState) => {
   const { id, link } = feed;
   const allOriginsLink = `https://allorigins.hexlet.app/get?disableCache=true&url=${link}`;
-  console.log('updating')
   setTimeout(() => {
     axios.get(allOriginsLink)
     .then((html) => parser(html.data.contents))
@@ -22,8 +21,7 @@ const updateFeed = (feed, watchedContentState, wUiState) => {
       })
       updateFeed(feed, watchedContentState, wUiState);
     })
-    .catch((e) => {
-      console.log(e);
+    .catch(() => {
       updateFeed(feed, watchedContentState, wUiState)});
   }, 5000);
 };
