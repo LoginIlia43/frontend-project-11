@@ -1,1 +1,58 @@
-<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><title>Webpack App</title><script defer="defer" src="main.js"></script></head><body class="d-flex flex-column min-vh-100"><div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel"></h5></div><div class="modal-body"><p class="modal-description"></p></div><div class="modal-footer"><button type="button" class="btn btn-primary" id="openLink">Open link</button> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div><main class="flex-grow-1"><section id="top"><div class="container"><div class="row top-row"><h1>RSS aggregator</h1><p class="descr">Start reading RSS today! It's easy! It's beautiful!</p><form><div class="row form-row"><input name="link" id="link" class="col input" placeholder="Input RSS link" required autofocus> <button class="col-1 btn btn-primary" type="submit">Find</button></div></form><p class="example">Example: https://ru.hexlet.io/lessons.rss</p><p class="error"></p></div></div></section><section id="bottom"><div class="container flex"><div id="posts-container" class="bottom-row"></div><div id="feeds-container" class="d-flex col bottom-row"></div></div></section></main><footer><div class="container">Created by <a href="https://github.com/LoginIlia43">LoginIlia43</a></div></footer></body></html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Webpack App</title>
+    <script defer src="main.js"></script></head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-description"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="openLink">Open link</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <main class="flex-grow-1">
+            <section id="top">
+                <div class="container">
+                    <div class="row top-row">
+                        <h1>RSS aggregator</h1>
+                        <p class="descr">Start reading RSS today! It's easy! It's beautiful!</p>
+                        <form method="get">
+                            <div class="row form-row">
+                                <input type="text" name="link" id="link" class="col input" placeholder="Input RSS link" required autofocus>
+                                <button class="col-1 btn btn-primary" type="submit">Find</button>
+                             </div>
+                        </form>
+                    <p class="example">Example: https://ru.hexlet.io/lessons.rss</p>
+                    <p class="error"></p>
+                    </div>
+                </div>
+            </section>
+            <section id="bottom">
+                <div class="container flex">
+                    <div id="posts-container" class="bottom-row">
+                    </div>
+                    <div id="feeds-container" class="d-flex col bottom-row">
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="container">
+                Created by
+                <a href="https://github.com/LoginIlia43">LoginIlia43</a>
+            </div>
+        </footer>
+    </body>
+</html>
