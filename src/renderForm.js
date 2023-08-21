@@ -13,7 +13,7 @@ export default (status) => {
       inputEl.value = '';
       inputEl.classList.remove('invalid');
       errorEl.classList.add('no-error');
-      errorEl.textContent = 'RSS successfully loaded';
+      errorEl.textContent = 'RSS успешно загружен';
       inputEl.focus();
       break;
     default:

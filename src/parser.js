@@ -4,7 +4,7 @@ export default (html) => {
 
   return new Promise((resolve, reject) => {
     if (!result) {
-      reject(new Error('link doesn\'t contain a valid RSS'));
+      reject(new Error('Ресурс не содержит валидный RSS'));
     }
     resolve(result);
   });

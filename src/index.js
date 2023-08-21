@@ -1,6 +1,6 @@
 import './styles.scss';
 import 'bootstrap';
-import { object, string } from 'yup';
+import { object, string, setLocale } from 'yup';
 import axios from 'axios';
 import watcherState from './watcherState.js';
 import parser from './parser.js';
@@ -57,13 +57,19 @@ const app = () => {
   };
 
   const validateLink = (wState) => {
+    setLocale({
+      url: {
+        default: 'Ссылка должна быть валидным URL',
+      },
+    });
+
     const schema = object({
       link: string().url().test({
         name: 'dublicate',
         skipAbsent: true,
         test(link, ctx) {
           if (wState.rssList.includes(link)) {
-            return ctx.createError({ message: 'This RSS is already in the list' });
+            return ctx.createError({ message: 'RSS уже существует' });
           }
           return true;
         },
